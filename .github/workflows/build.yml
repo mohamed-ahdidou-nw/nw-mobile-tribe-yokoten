@@ -29,7 +29,7 @@ jobs:
        - name: Install pod dependency
          run: |
            cd ios
-           bundle exec pod install
+           BUNDLE_GEMFILE="MyProject/Gemfile.ios" bundle exec pod install
        - name: Build iOS JS Bundle
          run: |
            yarn run package-ios
@@ -72,6 +72,7 @@ jobs:
        - name: Execute Gradle build
          run: |
            cd android
+           chmod +x gradlew
            ./gradlew build
        - name: Build Android JS Bundle
          run: |
