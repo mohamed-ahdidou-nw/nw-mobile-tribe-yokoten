@@ -11,10 +11,8 @@ on:
 jobs:
    ios-build:
      name: iOS Dev Build
-     runs-on: self-hosted
+     runs-on: macOS-latest
      steps:
-       - name: Show self-hosted machine infomation
-         run: uname -a
        - name: Cancel previous runs
          uses: styfle/cancel-workflow-action@0.9.1
        - name: Checkout repo from dev branch
@@ -51,7 +49,7 @@ jobs:
            bundle exec fastlane build_testflight
    android-build:
      name: Android Dev Build
-     runs-on: self-hosted
+     runs-on: ubuntu-latest
      steps:
        - name: Show self-hosted machine infomation
          run: uname -a
