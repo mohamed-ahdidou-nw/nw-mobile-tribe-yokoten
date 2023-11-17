@@ -16,9 +16,7 @@ jobs:
        - name: Cancel previous runs
          uses: styfle/cancel-workflow-action@0.9.1
        - name: Checkout repo from dev branch
-         uses: actions/checkout@v3
-         with:
-           ref: dev
+         uses: actions/checkout@v2
        - name: Install npm dependency
          run: yarn install
        - name: Cache cocoapods
@@ -56,9 +54,7 @@ jobs:
        - name: Cancel previous runs
          uses: styfle/cancel-workflow-action@0.9.1
        - name: Checkout repo from dev branch
-         uses: actions/checkout@v3
-         with:
-           ref: dev
+         uses: actions/checkout@v2
        - name: Install npm dependency
          run: yarn install
        - name: Setup Android SDK
