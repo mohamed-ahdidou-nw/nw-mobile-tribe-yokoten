@@ -22,15 +22,16 @@ jobs:
        - uses: actions/setup-node@v3
          with:
            node-version: '18'
-           cache: 'yarn'
+           cache: 'npm'
+           cache-dependency-path: ios/package-lock.json
 
        - name: Enable Corepack
          run: corepack enable
  
-       - name: install yarn dependencies
+       - name: install npm dependencies
          run:  |
            cd packages/app-mobile/ios
-           yarn install          
+           npm install          
  
        - name: install Cocoapod dependencies
          run: |
