@@ -25,14 +25,10 @@ jobs:
            cache: 'npm'
            cache-dependency-path: package-lock.json
 
+       - name: Install npm dependencies
+         run: npm install  
        - name: Enable Corepack
          run: corepack enable
- 
-       - name: install npm dependencies
-         run:  |
-           cd ios
-           npm install          
- 
        - name: install Cocoapod dependencies
          run: |
            cd ios
@@ -47,7 +43,7 @@ jobs:
            -configuration Debug \
            -destination generic/platform=iOS \
            -archivePath $RUNNER_TEMP/RnGhaAppcenterPipeline.xcarchive \
-           archive          
+           archive
  
        - name: export ipa
          env:
@@ -92,20 +88,8 @@ jobs:
             ${{ runner.os }}-gradle-
        - name: Setup Gradle
          uses: gradle/gradle-build-action@v2
-       - name: Build Android JS Bundle
-         run: |
-           npm run android
-       - name: Delete Android build duplicate assets resource
-         run: yarn run delete-pics
-       - name: Install bundler
+       - name: Execute Gradle build
          run: |
            cd android
-           gem install bundler
-       - name: Install gem plugins
-         run: |
-           cd android
-           bundle install
-       - name: Run fastlane
-         run: |
-           cd android
-           bundle exec fastlane build_qa
+           chmod +x gradlew
+           ./gradlew assemble
