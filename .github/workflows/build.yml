@@ -23,24 +23,24 @@ jobs:
          with:
            node-version: '18'
            cache: 'npm'
-           cache-dependency-path: ios/package-lock.json
+           cache-dependency-path: package-lock.json
 
        - name: Enable Corepack
          run: corepack enable
  
        - name: install npm dependencies
          run:  |
-           cd packages/app-mobile/ios
+           cd ios
            npm install          
  
        - name: install Cocoapod dependencies
          run: |
-           cd packages/app-mobile/ios
+           cd ios
            pod install          
  
        - name: build archive
          run: |
-           cd packages/app-mobile/ios
+           cd ios
            xcodebuild -workspace RnGhaAppcenterPipeline.xcworkspace \
            -scheme "RnGhaAppcenterPipeline" \
            -sdk iphoneos \
