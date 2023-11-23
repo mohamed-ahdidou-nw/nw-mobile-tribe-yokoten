@@ -1,5 +1,5 @@
-import { ImageStyle, StyleProp, ViewStyle } from "react-native"
-import { IconTypes } from "./icons"
+import { type ImageStyle, type StyleProp, type ViewStyle } from "react-native";
+import { type IconTypes } from "./icons";
 
 export interface IconProps {
   /**

@@ -1,10 +1,10 @@
-import React, { useLayoutEffect, useState } from "react"
+import React, { useLayoutEffect, useState } from "react";
 import {
-  Image as RNImage,
-  ImageProps as DefaultImageProps,
-  ImageURISource,
-  Platform,
-} from "react-native"
+	Image as RNImage,
+	type ImageProps as DefaultImageProps,
+	type ImageURISource,
+	Platform
+} from "react-native";
 
 type ImageProps = DefaultImageProps & {
   source: ImageURISource
@@ -23,30 +23,34 @@ type ImageProps = DefaultImageProps & {
  * Image import from react-native. Now all images in that file are handled by this
  * component and are web-ready if not explicitly sized in the style property.
  */
-export function AutoImage(props: ImageProps) {
-  const [imageSize, setImageSize] = useState({ width: 0, height: 0 })
+export function AutoImage (props: ImageProps) {
+	const [imageSize, setImageSize] = useState({ width: 0, height: 0 });
 
-  useLayoutEffect(() => {
-    let mounted = true
+	useLayoutEffect(() => {
+		let mounted = true;
 
-    if (props.source?.uri) {
-      RNImage.getSize(props.source.uri as any, (width, height) => {
-        if (mounted) setImageSize({ width, height })
-      })
-    } else if (Platform.OS === "web") {
-      // web requires a different method to get it's size
-      RNImage.getSize(props.source as any, (width, height) => {
-        if (mounted) setImageSize({ width, height })
-      })
-    } else {
-      const { width, height } = RNImage.resolveAssetSource(props.source)
-      setImageSize({ width, height })
-    }
+		if (props.source?.uri) {
+			RNImage.getSize(props.source.uri as any, (width, height) => {
+				if (mounted) {
+					setImageSize({ width, height });
+				}
+			});
+		} else if (Platform.OS === "web") {
+			// Web requires a different method to get it's size
+			RNImage.getSize(props.source as any, (width, height) => {
+				if (mounted) {
+					setImageSize({ width, height });
+				}
+			});
+		} else {
+			const { width, height } = RNImage.resolveAssetSource(props.source);
+			setImageSize({ width, height });
+		}
 
-    return () => {
-      mounted = false
-    }
-  }, [props.source])
+		return () => {
+			mounted = false;
+		};
+	}, [props.source]);
 
-  return <RNImage {...props} style={[imageSize, props.style]} />
+	return <RNImage {...props} style={[imageSize, props.style]} />;
 }

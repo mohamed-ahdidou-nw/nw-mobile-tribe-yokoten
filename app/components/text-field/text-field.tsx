@@ -1,29 +1,29 @@
-import React from "react"
-import { StyleProp, TextInput, TextInputProps, TextStyle, View, ViewStyle } from "react-native"
-import { color, spacing, typography } from "../../theme"
-import { translate, TxKeyPath } from "../../i18n"
-import { Text } from "../text/text"
+import React from "react";
+import { type StyleProp, TextInput, type TextInputProps, type TextStyle, View, type ViewStyle } from "react-native";
+import { color, spacing, typography } from "../../theme";
+import { translate, type TxKeyPath } from "../../i18n";
+import { Text } from "../text/text";
 
-// the base styling for the container
+// The base styling for the container
 const CONTAINER: ViewStyle = {
-  paddingVertical: spacing[3],
-}
+	paddingVertical: spacing[3]
+};
 
-// the base styling for the TextInput
+// The base styling for the TextInput
 const INPUT: TextStyle = {
-  fontFamily: typography.primary,
-  color: color.text,
-  minHeight: 44,
-  fontSize: 18,
-  backgroundColor: color.palette.white,
-}
+	fontFamily: typography.primary,
+	color: color.text,
+	minHeight: 44,
+	fontSize: 18,
+	backgroundColor: color.palette.white
+};
 
-// currently we have no presets, but that changes quickly when you build your app.
-const PRESETS: { [name: string]: ViewStyle } = {
-  default: {},
-}
+// Currently we have no presets, but that changes quickly when you build your app.
+const PRESETS: Record<string, ViewStyle> = {
+	default: {}
+};
 
-export interface TextFieldProps extends TextInputProps {
+export type TextFieldProps = {
   /**
    * The placeholder i18n key.
    */
@@ -60,39 +60,39 @@ export interface TextFieldProps extends TextInputProps {
   preset?: keyof typeof PRESETS
 
   forwardedRef?: any
-}
+} & TextInputProps
 
 /**
  * A component which has a label and an input together.
  */
-export function TextField(props: TextFieldProps) {
-  const {
-    placeholderTx,
-    placeholder,
-    labelTx,
-    label,
-    preset = "default",
-    style: styleOverride,
-    inputStyle: inputStyleOverride,
-    forwardedRef,
-    ...rest
-  } = props
+export function TextField (props: TextFieldProps) {
+	const {
+		placeholderTx,
+		placeholder,
+		labelTx,
+		label,
+		preset = "default",
+		style: styleOverride,
+		inputStyle: inputStyleOverride,
+		forwardedRef,
+		...rest
+	} = props;
 
-  const containerStyles = [CONTAINER, PRESETS[preset], styleOverride]
-  const inputStyles = [INPUT, inputStyleOverride]
-  const actualPlaceholder = placeholderTx ? translate(placeholderTx) : placeholder
+	const containerStyles = [CONTAINER, PRESETS[preset], styleOverride];
+	const inputStyles = [INPUT, inputStyleOverride];
+	const actualPlaceholder = placeholderTx ? translate(placeholderTx) : placeholder;
 
-  return (
-    <View style={containerStyles}>
-      <Text preset="fieldLabel" tx={labelTx} text={label} />
-      <TextInput
-        placeholder={actualPlaceholder}
-        placeholderTextColor={color.palette.lighterGrey}
-        underlineColorAndroid={color.transparent}
-        {...rest}
-        style={inputStyles}
-        ref={forwardedRef}
-      />
-    </View>
-  )
+	return (
+		<View style={containerStyles}>
+			<Text preset='fieldLabel' tx={labelTx} text={label} />
+			<TextInput
+				placeholder={actualPlaceholder}
+				placeholderTextColor={color.palette.lighterGrey}
+				underlineColorAndroid={color.transparent}
+				{...rest}
+				style={inputStyles}
+				ref={forwardedRef}
+			/>
+		</View>
+	);
 }

@@ -1,5 +1,5 @@
-import { ImageStyle, StyleProp } from "react-native"
-import { WallpaperPresets } from "./wallpaper.presets"
+import { type ImageStyle, type StyleProp } from "react-native";
+import { type WallpaperPresets } from "./wallpaper.presets";
 
 export interface WallpaperProps {
   /**

@@ -9,9 +9,9 @@ export interface ReactotronConfig {
   clearOnLoad?: boolean
   /** Root state logging. */
   state?: {
-    /** log the initial data that we put into the state on startup? */
+    /** Log the initial data that we put into the state on startup? */
     initial?: boolean
-    /** log snapshot changes. */
+    /** Log snapshot changes. */
     snapshots?: boolean
   }
 }
@@ -20,16 +20,16 @@ export interface ReactotronConfig {
  * The default Reactotron configuration.
  */
 export const DEFAULT_REACTOTRON_CONFIG: ReactotronConfig = {
-  clearOnLoad: true,
-  host: "localhost",
-  useAsyncStorage: true,
-  state: {
-    initial: true,
-    snapshots: false,
-  },
-}
+	clearOnLoad: true,
+	host: "localhost",
+	useAsyncStorage: true,
+	state: {
+		initial: true,
+		snapshots: false
+	}
+};
 
 /**
  * The default Reactotron WebSocket URI
  */
-export const DEFAULT_REACTOTRON_WS_URI = "ws://localhost:9090"
+export const DEFAULT_REACTOTRON_WS_URI = "ws://localhost:9090";
