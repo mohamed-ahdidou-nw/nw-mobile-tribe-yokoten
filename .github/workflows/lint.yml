@@ -18,22 +18,19 @@ jobs:
           - name: Checkout repo from dev branch
             uses: actions/checkout@v2
           - name: Install reactnative-cli
-            run: |
-              cd RnGhaAppcenterPipeline
-              npm install -g react-native-cli
+            run: npm install -g react-native-cli
+            working-directory: RnGhaAppcenterPipeline
           - uses: actions/setup-node@v3
             with:
               node-version: '18'
               cache: 'npm'
               cache-dependency-path: package-lock.json
           - name: Install npm dependencies
-            run: |
-              cd RnGhaAppcenterPipeline
-              npm install
+            run: npm install
+            working-directory: RnGhaAppcenterPipeline
           - name: Execute lint
-            run: |
-              cd RnGhaAppcenterPipeline
-              npm run lint
+            run: npm run lint
+            working-directory: RnGhaAppcenterPipeline
     prettier:
         name: Prettier
         runs-on: ubuntu-latest
@@ -43,21 +40,19 @@ jobs:
             - name: Checkout repo from dev branch
               uses: actions/checkout@v2
             - name: Install reactnative-cli
-              run: |
-                cd RnGhaAppcenterPipeline
-                npm install -g react-native-cli
+              run: npm install -g react-native-cli
+              working-directory: RnGhaAppcenterPipeline
             - uses: actions/setup-node@v3
               with:
                 node-version: '18'
                 cache: 'npm'
                 cache-dependency-path: package-lock.json
             - name: Install npm dependencies
-              run: |
-                cd RnGhaAppcenterPipeline
-                npm install
+              run: npm install
+              working-directory: RnGhaAppcenterPipeline
             - name: Execute Prettier
               run: |
-                cd RnGhaAppcenterPipeline
                 npm run format:js
                 npm run format:ts
+              working-directory: RnGhaAppcenterPipeline
                 

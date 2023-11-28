@@ -18,9 +18,8 @@ jobs:
        - name: Checkout repo from dev branch
          uses: actions/checkout@v2
        - name: Install reactnative-cli
-         run: |
-            cd RnGhaAppcenterPipeline
-            npm install -g react-native-cli
+         run: npm install -g react-native-cli
+         working-directory: RnGhaAppcenterPipeline
        - uses: actions/setup-node@v3
          with:
            node-version: '18'
@@ -28,20 +27,19 @@ jobs:
            cache-dependency-path: package-lock.json
 
        - name: Install npm dependencies
-         run: |
-          cd RnGhaAppcenterPipeline
-          npm install  
+         run: npm install
+         working-directory: RnGhaAppcenterPipeline
        - name: Enable Corepack
          run: corepack enable
+         working-directory: RnGhaAppcenterPipeline
        - name: install Cocoapod dependencies
          run: |
-           cd RnGhaAppcenterPipeline
            cd ios
-           pod install          
+           pod install
+         working-directory: RnGhaAppcenterPipeline 
  
        - name: build archive
          run: |
-           cd RnGhaAppcenterPipeline
            cd ios
            xcodebuild -workspace RnGhaAppcenterPipeline.xcworkspace \
            -scheme "RnGhaAppcenterPipeline" \
@@ -50,6 +48,7 @@ jobs:
            -destination generic/platform=iOS \
            -archivePath $RUNNER_TEMP/RnGhaAppcenterPipeline.xcarchive \
            archive
+         working-directory: RnGhaAppcenterPipeline
  
        - name: export ipa
          env:
@@ -60,8 +59,8 @@ jobs:
            xcodebuild -exportArchive \
            -archivePath $RUNNER_TEMP/RnGhaAppcenterPipeline.xcarchive \
            -exportOptionsPlist $EXPORT_OPTS_PATH \
-           -exportPath $RUNNER_TEMP/build                    
- 
+           -exportPath $RUNNER_TEMP/build
+         working-directory: RnGhaAppcenterPipeline
        - name: Upload application
          uses: actions/upload-artifact@v3
          with:
@@ -79,13 +78,10 @@ jobs:
        - name: Checkout repo from dev branch
          uses: actions/checkout@v2
        - name: Install reactnative-cli
-         run: |
-            cd RnGhaAppcenterPipeline
-            npm install -g react-native-cli
+         run: npm install -g react-native-cli
        - name: Install npm dependency
-         run: |
-            cd RnGhaAppcenterPipeline
-            npm install
+         run: npm install
+         working-directory: RnGhaAppcenterPipeline
        - name: Setup Android SDK
          uses: android-actions/setup-android@v2
        - uses: actions/cache@v3
@@ -100,7 +96,7 @@ jobs:
          uses: gradle/gradle-build-action@v2
        - name: Execute Gradle build
          run: |
-           cd RnGhaAppcenterPipeline
            cd android
            chmod +x gradlew
            ./gradlew assemble
+         working-directory: RnGhaAppcenterPipeline
