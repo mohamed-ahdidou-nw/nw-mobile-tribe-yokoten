@@ -18,7 +18,9 @@ jobs:
        - name: Checkout repo from dev branch
          uses: actions/checkout@v2
        - name: Install reactnative-cli
-         run: npm install -g react-native-cli
+         run: |
+            cd RnGhaAppcenterPipeline
+            npm install -g react-native-cli
        - uses: actions/setup-node@v3
          with:
            node-version: '18'
@@ -26,16 +28,20 @@ jobs:
            cache-dependency-path: package-lock.json
 
        - name: Install npm dependencies
-         run: npm install  
+         run: |
+          cd RnGhaAppcenterPipeline
+          npm install  
        - name: Enable Corepack
          run: corepack enable
        - name: install Cocoapod dependencies
          run: |
+           cd RnGhaAppcenterPipeline
            cd ios
            pod install          
  
        - name: build archive
          run: |
+           cd RnGhaAppcenterPipeline
            cd ios
            xcodebuild -workspace RnGhaAppcenterPipeline.xcworkspace \
            -scheme "RnGhaAppcenterPipeline" \
@@ -73,9 +79,13 @@ jobs:
        - name: Checkout repo from dev branch
          uses: actions/checkout@v2
        - name: Install reactnative-cli
-         run: npm install -g react-native-cli
+         run: |
+            cd RnGhaAppcenterPipeline
+            npm install -g react-native-cli
        - name: Install npm dependency
-         run: npm install
+         run: |
+            cd RnGhaAppcenterPipeline
+            npm install
        - name: Setup Android SDK
          uses: android-actions/setup-android@v2
        - uses: actions/cache@v3
@@ -90,6 +100,7 @@ jobs:
          uses: gradle/gradle-build-action@v2
        - name: Execute Gradle build
          run: |
+           cd RnGhaAppcenterPipeline
            cd android
            chmod +x gradlew
            ./gradlew assemble

@@ -18,13 +18,19 @@ jobs:
           - name: Checkout repo from dev branch
             uses: actions/checkout@v2
           - name: Install reactnative-cli
-            run: npm install -g react-native-cli
+            run: |
+              cd RnGhaAppcenterPipeline
+              npm install -g react-native-cli
           - uses: actions/setup-node@v3
             with:
               node-version: '18'
               cache: 'npm'
               cache-dependency-path: package-lock.json
           - name: Install npm dependencies
-            run: npm install
+            run: |
+              cd RnGhaAppcenterPipeline
+              npm install
           - name: Execute lint
-            run: npm test
+            run: |
+              cd RnGhaAppcenterPipeline
+              npm test
