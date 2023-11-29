@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable @typescript-eslint/no-var-requires */
 import React, { useState, useEffect } from "react";
 import * as QueryString from "query-string";
 
@@ -5,8 +7,8 @@ interface StorybookQueryParams {
   storybook?: boolean
 }
 
-export const ToggleStorybook = props => {
-	const [StorybookUIRoot, setStorybookUIRoot] = useState<any>(null);
+export const ToggleStorybook = (props) => {
+	const [StorybookUIRoot, setStorybookUIRoot] = useState<never>(null);
 	const [queryParams, setQueryParams] = useState<StorybookQueryParams>({});
 
 	useEffect(() => {

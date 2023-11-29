@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable @typescript-eslint/no-var-requires */
 import React, { useState, useEffect, useRef } from "react";
 import { DevSettings } from "react-native";
 import { loadString, saveString } from "../app/utils/storage";
@@ -13,7 +15,7 @@ import { DEFAULT_REACTOTRON_WS_URI } from "../app/services/reactotron/reactotron
  * persists across reloads/restarts - this is handy when developing
  * new components in Storybook.
  */
-export function ToggleStorybook (props) {
+export function ToggleStorybook(props) {
 	const [showStorybook, setShowStorybook] = useState(false);
 	const [StorybookUIRoot, setStorybookUIRoot] = useState(null);
 	const ws = useRef(new WebSocket(DEFAULT_REACTOTRON_WS_URI));
@@ -24,14 +26,14 @@ export function ToggleStorybook (props) {
 		}
 
 		// Load the setting from storage if it's there
-		loadString("devStorybook").then(storedSetting => {
+		loadString("devStorybook").then((storedSetting) => {
 			// Set the initial value
 			setShowStorybook(storedSetting === "on");
 
 			if (DevSettings) {
 				// Add our toggle command to the menu
 				DevSettings.addMenuItem("Toggle Storybook", () => {
-					setShowStorybook(show => {
+					setShowStorybook((show) => {
 						// On toggle, flip the current value
 						show = !show;
 
@@ -48,7 +50,7 @@ export function ToggleStorybook (props) {
 			setStorybookUIRoot(() => require("./storybook").StorybookUIRoot);
 
 			// Behave as Reactotron.storybookSwitcher(), not a HOC way.
-			ws.current.onmessage = e => {
+			ws.current.onmessage = (e) => {
 				const data = JSON.parse(e.data);
 
 				if (data.type === "storybook") {
@@ -57,7 +59,7 @@ export function ToggleStorybook (props) {
 				}
 			};
 
-			ws.current.onerror = e => {
+			ws.current.onerror = (e) => {
 				console.tron.error(e, null);
 				setShowStorybook(storedSetting === "on");
 			};

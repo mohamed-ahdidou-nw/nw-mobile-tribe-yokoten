@@ -1,7 +1,7 @@
-import { type StyleProp, type TextProps as TextProperties, type TextStyle } from "react-native";
-import type i18n from "i18n-js";
-import { type TextPresets } from "./text.presets";
-import { type TxKeyPath } from "../../i18n";
+import { type StyleProp, type TextProps as TextProperties, type TextStyle } from "react-native"
+import type i18n from "i18n-js"
+import { type TextPresets } from "./text.presets"
+import { type TxKeyPath } from "../../i18n"
 
 export type TextProps = {
   /**

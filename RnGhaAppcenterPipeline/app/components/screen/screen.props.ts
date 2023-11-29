@@ -1,6 +1,6 @@
-import type React from "react";
-import { type StyleProp, type ViewStyle } from "react-native";
-import { type KeyboardOffsets, type ScreenPresets } from "./screen.presets";
+import type React from "react"
+import { type StyleProp, type ViewStyle } from "react-native"
+import { type KeyboardOffsets, type ScreenPresets } from "./screen.presets"
 
 export interface ScreenProps {
   /**

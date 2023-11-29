@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import React, { useEffect } from "react";
 import { getStorybookUI, configure } from "@storybook/react-native";
 import { initFonts } from "../app/theme/fonts";
@@ -12,10 +13,10 @@ const StorybookUI = getStorybookUI({
 	port: 9001,
 	host: "localhost",
 	onDeviceUI: true,
-	asyncStorage: require("@react-native-async-storage/async-storage").default || null
+	asyncStorage: require("@react-native-async-storage/async-storage").default || null,
 });
 
-export function StorybookUIRoot () {
+export function StorybookUIRoot() {
 	useEffect(() => {
 		(async () => {
 			await initFonts(); // Expo only

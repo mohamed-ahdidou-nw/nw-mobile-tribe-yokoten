@@ -20,16 +20,16 @@ export interface ReactotronConfig {
  * The default Reactotron configuration.
  */
 export const DEFAULT_REACTOTRON_CONFIG: ReactotronConfig = {
-	clearOnLoad: true,
-	host: "localhost",
-	useAsyncStorage: true,
-	state: {
-		initial: true,
-		snapshots: false
-	}
-};
+  clearOnLoad: true,
+  host: "localhost",
+  useAsyncStorage: true,
+  state: {
+    initial: true,
+    snapshots: false,
+  },
+}
 
 /**
  * The default Reactotron WebSocket URI
  */
-export const DEFAULT_REACTOTRON_WS_URI = "ws://localhost:9090";
+export const DEFAULT_REACTOTRON_WS_URI = "ws://localhost:9090"

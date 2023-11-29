@@ -1,6 +1,6 @@
-import type * as React from "react";
-import { type StyleProp, type ViewStyle } from "react-native";
-import { type FormRowPresets } from "./form-row.presets";
+import type * as React from "react"
+import { type StyleProp, type ViewStyle } from "react-native"
+import { type FormRowPresets } from "./form-row.presets"
 
 /**
  * The properties you can pass to FormRow.

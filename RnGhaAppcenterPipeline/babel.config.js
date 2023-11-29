@@ -1,15 +1,45 @@
 module.exports = {
-  presets: ["module:metro-react-native-babel-preset"],
-  env: {
-    production: {},
-  },
-  plugins: [
+  presets: [
     [
-      "@babel/plugin-proposal-decorators",
+      'module:metro-react-native-babel-preset',
+      { useTransformReactJSXExperimental: true },
+    ],
+  ],
+  plugins: [
+    'react-native-reanimated/plugin',
+    ['@babel/plugin-proposal-decorators', { legacy: true }],
+    [
+      'module-resolver',
       {
-        legacy: true,
+        root: ['./src'],
+        extensions: [
+          '.ios.ts',
+          '.android.ts',
+          '.ts',
+          '.ios.tsx',
+          '.android.tsx',
+          '.tsx',
+          '.jsx',
+          '.js',
+          '.json',
+        ],
+        alias: {
+          '@app': './src',
+        },
       },
     ],
-    ["@babel/plugin-proposal-optional-catch-binding"],
+    [
+      '@babel/plugin-transform-react-jsx',
+      {
+        runtime: 'automatic',
+      },
+    ],
+    [
+      'module:react-native-dotenv',
+      {
+        moduleName: '@env',
+        allowUndefined: false,
+      },
+    ],
   ],
-}
+};

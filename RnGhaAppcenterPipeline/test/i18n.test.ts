@@ -1,5 +1,6 @@
-const en = require("../app/i18n/en.json");
+/* eslint-disable @typescript-eslint/no-var-requires */
 const { exec } = require("child_process");
+const en = require("../app/i18n/en.json");
 
 // Use this array for keys that for whatever reason aren't greppable so they
 // don't hold your test suite hostage by always failing.
@@ -7,7 +8,7 @@ const EXCEPTIONS = [
 	// "welcomeScreen.readyForLaunch",
 ];
 
-function iterate (obj, stack, array) {
+function iterate(obj, stack, array) {
 	for (const property in obj) {
 		if (Object.prototype.hasOwnProperty.call(obj, property)) {
 			if (typeof obj[property] === "object") {
@@ -43,10 +44,11 @@ function iterate (obj, stack, array) {
  */
 
 describe("i18n", () => {
-	test("There are no missing keys", done => {
+	test("There are no missing keys", (done) => {
 		// Actual command output:
 		// grep "[T\|t]x=[{]\?\"\S*\"[}]\?\|translate(\"\S*\"" -ohr './app' | grep -o "\".*\""
-		const command = "grep \"[T\\|t]x=[{]\\?\\\"\\S*\\\"[}]\\?\\|translate(\\\"\\S*\\\"\" -ohr './app' | grep -o \"\\\".*\\\"\"";
+		const command =
+      "grep \"[T\\|t]x=[{]\\?\\\"\\S*\\\"[}]\\?\\|translate(\\\"\\S*\\\"\" -ohr './app' | grep -o \"\\\".*\\\"\"";
 		exec(command, (_, stdout) => {
 			const allTranslationsDefined = iterate(en, "", []);
 			const allTranslationsUsed = stdout.replace(/"/g, "").split("\n");

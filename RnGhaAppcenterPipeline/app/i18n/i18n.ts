@@ -1,12 +1,12 @@
-import * as Localization from "expo-localization";
-import i18n from "i18n-js";
-import en from "./en.json";
-import ja from "./ja.json";
+import * as Localization from "expo-localization"
+import i18n from "i18n-js"
+import en from "./en.json"
+import ja from "./ja.json"
 
-i18n.fallbacks = true;
-i18n.translations = { en, ja };
+i18n.fallbacks = true
+i18n.translations = { en, ja }
 
-i18n.locale = Localization.locale || "en";
+i18n.locale = Localization.locale || "en"
 
 /**
  * Builds up valid keypaths for translations.
@@ -22,13 +22,13 @@ type RecursiveKeyOf<TObj extends Record<string, unknown>> = {
 
 type RecursiveKeyOfInner<TObj extends Record<string, unknown>> = {
   [TKey in keyof TObj & (string | number)]: RecursiveKeyOfHandleValue<
-  TObj[TKey],
+    TObj[TKey],
     `['${TKey}']` | `.${TKey}`
   >
 }[keyof TObj & (string | number)]
 
-type RecursiveKeyOfHandleValue<TValue, Text extends string> = TValue extends any[]
+type RecursiveKeyOfHandleValue<TValue, Text extends string> = TValue extends never[]
   ? Text
   : TValue extends Record<string, unknown>
-    ? Text | `${Text}${RecursiveKeyOfInner<TValue>}`
-    : Text
+  ? Text | `${Text}${RecursiveKeyOfInner<TValue>}`
+  : Text
