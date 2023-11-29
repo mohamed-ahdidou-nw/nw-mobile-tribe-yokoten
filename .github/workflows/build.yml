@@ -9,13 +9,14 @@ on:
         branches:
             - 'main'
 jobs:
-   ios-build:
-     name: iOS Dev Build
-     runs-on: macOS-latest
-     defaults:
+  ios-build:
+    name: iOS Dev Build
+    if: ${{ !startsWith(github.event.head_commit.message, '[skip-ios]')}}
+    runs-on: macOS-latest
+    defaults:
       run:
         working-directory: 'RnGhaAppcenterPipeline'
-     steps:
+    steps:
        - name: Cancel previous runs
          uses: styfle/cancel-workflow-action@0.9.1
        - name: Checkout repo from dev branch
@@ -67,13 +68,13 @@ jobs:
            # you can also archive the entire directory 
            # path: ${{ runner.temp }}/build
            retention-days: 3
-   android-build:
-     name: Android Dev Build
-     runs-on: ubuntu-latest
-     defaults:
+  android-build:
+    name: Android Dev Build
+    runs-on: ubuntu-latest
+    defaults:
       run:
         working-directory: 'RnGhaAppcenterPipeline'
-     steps:
+    steps:
        - name: Cancel previous runs
          uses: styfle/cancel-workflow-action@0.9.1
        - name: Checkout repo from dev branch
