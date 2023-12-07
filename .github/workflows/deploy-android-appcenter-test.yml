@@ -7,8 +7,8 @@ on:
     
 env:
   APP_CENTER_TOKEN: ${{ secrets.APP_CENTER_TOKEN_MYAPP_ANDROID_TEST  }}  
-  APP_NAME: ${{ 'MyApp-Android/ENV_TEST'  }}  
-  TESTING_GROUP: ${{  'ENV_TEST'  }} 
+  APP_NAME: ${{ 'RN_GHA_APPCENTER_PIPELINE_ANDROID'  }}  
+  TESTING_GROUP: ${{  'Tester'  }} 
   UPLOAD_FILE: ${{ 'android/app/build/outputs/apk/app-debug.apk'  }}  
   
 jobs:
