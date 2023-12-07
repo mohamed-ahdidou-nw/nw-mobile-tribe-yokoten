@@ -1,6 +1,7 @@
 [![.github/workflows/lint.yml](https://github.com/mohamed-ahdidou-nw/nw-mobile-tribe-yokoten/actions/workflows/lint.yml/badge.svg)](https://github.com/mohamed-ahdidou-nw/nw-mobile-tribe-yokoten/actions/workflows/lint.yml)
 [![.github/workflows/tests.yml](https://github.com/mohamed-ahdidou-nw/nw-mobile-tribe-yokoten/actions/workflows/tests.yml/badge.svg)](https://github.com/mohamed-ahdidou-nw/nw-mobile-tribe-yokoten/actions/workflows/tests.yml)
-[![Build status](https://github.com/mohamed-ahdidou-nw/nw-mobile-tribe-yokoten/actions/workflows/build.yml/badge.svg)](https://github.com/mohamed-ahdidou-nw/nw-mobile-tribe-yokoten/actions/workflows/build.yml)
+[![.github/workflows/build.yml](https://github.com/mohamed-ahdidou-nw/nw-mobile-tribe-yokoten/actions/workflows/build.yml/badge.svg)](https://github.com/mohamed-ahdidou-nw/nw-mobile-tribe-yokoten/actions/workflows/build.yml)
+[![.github/workflows/deploy-android-appcenter-test.yml](https://github.com/mohamed-ahdidou-nw/nw-mobile-tribe-yokoten/actions/workflows/deploy-android-appcenter-test.yml/badge.svg?branch=feat%2Fadd-github-action)](https://github.com/mohamed-ahdidou-nw/nw-mobile-tribe-yokoten/actions/workflows/deploy-android-appcenter-test.yml)
 
 # Welcome to your new ignited app!
 
