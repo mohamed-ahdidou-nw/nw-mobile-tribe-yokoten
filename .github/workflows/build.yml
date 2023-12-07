@@ -81,6 +81,11 @@ jobs:
          uses: actions/checkout@v2
        - name: Install reactnative-cli
          run: npm install -g react-native-cli
+       - uses: actions/setup-node@v4
+         with:
+          node-version: 16
+          cache: 'npm'
+          cache-dependency-path: RnGhaAppcenterPipeline/package-lock.json
        - name: Install npm dependency
          run: npm install
        - name: Setup Android SDK
